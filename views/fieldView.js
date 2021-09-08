@@ -21,6 +21,14 @@ class fieldView{
             this.drawRectangle(halfLine.x, halfLine.y + i, halfLine.width, halfLine.height, halfLine.color);
         }
     }
+
+    drawCircle(x,y,r,color){
+        this.ctx.fillStyle = color;
+        this.ctx.beginPath();
+        this.ctx.arc(x,y,r,0,Math.PI*2,true);
+        this.ctx.closePath();
+        this.ctx.fill();
+    }
 }
 
 export {fieldView}

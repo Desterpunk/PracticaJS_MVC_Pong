@@ -9,6 +9,12 @@ const player1 = new player(0,(canvas.height - 100)/2,10,100,0,"white");
 const player2 = new player(canvas.width - 10,(canvas.height - 100)/2,10,100,0,"white");
 const ball1 = new ball(canvas.width/2,canvas.height/2,10,5,5,7,"white");
 
+canvas.addEventListener("mousemove", getMousePos);
+function getMousePos(evt){
+    let rect = canvas.getBoundingClientRect();
+    player1.y = parseInt(evt.clientY - rect.top - player1.heigth/2);
+}
+
 function render(){
     field.drawRectangle(0, 0, canvas.width, canvas.height, "#800");
     field.drawHalfLine();
@@ -19,7 +25,7 @@ function render(){
     field.drawText(player2.score,(canvas.width/4)*3,canvas.height/5);
 }
 function update(){
-
+    console.log(player2.y)
 }
 
 function game(){

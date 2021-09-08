@@ -1,10 +1,5 @@
 class fieldView{
-    constructor(x, y,width,height, color,canvas){
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.color = color;
+    constructor(canvas){
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
     }

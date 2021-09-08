@@ -15,6 +15,8 @@ function render(){
     field.drawRectangle(player1.x,player1.y,player1.width,player1.heigth,player1.color);
     field.drawRectangle(player2.x,player2.y,player2.width,player2.heigth,player2.color);
     field.drawCircle(ball1.x, ball1.y, ball1.radius, ball1.color);
+    field.drawText(player1.score,canvas.width/4,canvas.height/5);
+    field.drawText(player2.score,(canvas.width/4)*3,canvas.height/5);
 }
 function update(){
 

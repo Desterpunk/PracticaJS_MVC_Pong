@@ -29,6 +29,12 @@ class fieldView{
         this.ctx.closePath();
         this.ctx.fill();
     }
+
+    drawText(text,x,y){
+        this.ctx.fillStyle = "#FFF";
+        this.ctx.font = "75px fantasy";
+        this.ctx.fillText(text, x, y);
+    }
 }
 
 export {fieldView}

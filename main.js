@@ -4,6 +4,7 @@ import { ball } from "./models/ball.js";
 
 const canvas = document.getElementById("pong");
 let buttonStart = document.querySelector('button');
+let info1 = document.getElementById('winner'); 
 
 const field = new fieldView(canvas);
 const player1 = new player(0,(canvas.height - 100)/2,10,100,0,"white");
@@ -16,6 +17,7 @@ function getMousePos(evt){
     player1.y = parseInt(evt.clientY - rect.top - player1.heigth/2);
 }   
 
+
 function render(){
     field.drawRectangle(0, 0, canvas.width, canvas.height, "#800");
     field.drawHalfLine();
@@ -25,8 +27,6 @@ function render(){
     field.drawText(player1.score,canvas.width/4,canvas.height/5);
     field.drawText(player2.score,(canvas.width/4)*3,canvas.height/5);
 }
-
-
 
 function update(){
     if( ball1.x - ball1.radius < -20 ){
@@ -54,8 +54,15 @@ function update(){
         ball1.speedExtra();
     } 
     
-    if (player2.score > 3){
-        console.log("perdedor");
+    if (player2.score>=3){
+        ball1.resetBall();
+        player1.score=0;
+        player2.score=0;
+        info1.innerText= "HASTA LA VISTA BABY";
+    } else if(player1.score >=3){
+        info1.innerText = "FELCIDADES HUMANO HA GANADO!";
+    } else if(player1.score > 0 || player2.score > 0){
+        info1.innerText = "";
     }
 }
 
@@ -68,7 +75,7 @@ let framePerSecond = 60;
 let loop = setInterval(game,1000/framePerSecond); 
 
 buttonStart.addEventListener('click', () => {
-  
+
     ball1.resetBall();
     player1.score=0;
     player2.score=0;

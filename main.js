@@ -77,7 +77,7 @@ function update(){
         ball1.resetBall();
         player1.score=0;
         player2.score=0;
-        info1.innerText= "HASTA LA VISTA BABY";
+        info1.innerText= "HASTA LA VISTA";
         defeat.play();
     } else if(player1.score >=3){
         info1.innerText = "FELCIDADES HUMANO HA GANADO!";

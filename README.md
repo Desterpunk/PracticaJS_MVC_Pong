@@ -3,10 +3,10 @@
 Este es un juego de pong contra una inteligencia artificial, es recomendable abirlo con java 11, y live server. o directamente entrando al siguiente enlace.
 
 
-###Link
+# Link
 [Links](https://pongintelligentejs.netlify.app/)
 
-#####H5 PREGUNTAS
+# PREGUNTAS
 
 Cual es el objetivo de js?
 

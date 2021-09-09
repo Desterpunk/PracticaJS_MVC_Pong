@@ -6,6 +6,20 @@ const canvas = document.getElementById("pong");
 let buttonStart = document.querySelector('button');
 let info1 = document.getElementById('winner'); 
 
+let hit = new Audio();
+let wall = new Audio();
+let userScore = new Audio();
+let comScore = new Audio();
+let victory = new Audio();
+let defeat = new Audio();
+
+hit.src = "sounds/hit.mp3";
+wall.src = "sounds/wall.mp3";
+comScore.src = "sounds/comScore.mp3";
+userScore.src = "sounds/userScore.mp3";
+victory.src = "sounds/victory.mp3";
+defeat.src = "sounds/defeat.mp3";
+
 const field = new fieldView(canvas);
 const player1 = new player(0,(canvas.height - 100)/2,10,100,0,"white");
 const player2 = new player(canvas.width - 10,(canvas.height - 100)/2,10,100,0,"white");
@@ -31,9 +45,11 @@ function render(){
 function update(){
     if( ball1.x - ball1.radius < -20 ){
         player2.score++;
+        comScore.play();
         ball1.resetBall();
     }else if( ball1.x + ball1.radius > canvas.width+20){
         player1.score++;
+        userScore.play();
         ball1.resetBall();
     }
 
@@ -43,15 +59,18 @@ function update(){
 
     if(ball1.y - ball1.radius < 0 || ball1.y + ball1.radius > canvas.height){
         ball1.velocityY = -ball1.velocityY;
+        wall.play();
     }
 
     if(ball1.x < player1.x && ball1.y > player1.y && ball1.y < player1.y+100){
         ball1.velocityX = -ball1.velocityX;
         ball1.speedExtra();
+        hit.play();
     }
     else if (ball1.x > player2.x && ball1.y > player2.y && ball1.y < player2.y+100){
         ball1.velocityX = -ball1.velocityX;
         ball1.speedExtra();
+        hit.play();
     } 
     
     if (player2.score>=3){
@@ -59,8 +78,10 @@ function update(){
         player1.score=0;
         player2.score=0;
         info1.innerText= "HASTA LA VISTA BABY";
+        defeat.play();
     } else if(player1.score >=3){
         info1.innerText = "FELCIDADES HUMANO HA GANADO!";
+        victory.play();
     } else if(player1.score > 0 || player2.score > 0){
         info1.innerText = "";
     }
